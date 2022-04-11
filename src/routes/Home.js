@@ -1,5 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import React from "react";
 
+import { gql, useQuery } from "@apollo/client";
+import Movie from "../components/Movie";
 const graphQuery = gql`
 	query GetMovies {
 		movies {
@@ -16,11 +18,11 @@ const Home = () => {
 	if (loading) {
 		return <h1>Loading</h1>;
 	}
-	if (data) {
+	if (!loading && data && data.movies) {
 		return (
 			<div>
 				{data.movies.map((movie) => (
-					<img src={movie.medium_cover_image} key={movie.id} />
+					<Movie key={movie.id} id={movie.id} />
 				))}
 			</div>
 		);
