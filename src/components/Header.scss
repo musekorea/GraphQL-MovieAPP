@@ -1,0 +1,18 @@
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 6px 20px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	background-color: #fe4250;
+	z-index: 999;
+	color: white;
+	.logo {
+		width: 100px;
+		height: 28px;
+		position: relative;
+		top: 0.5px;
+	}
+}

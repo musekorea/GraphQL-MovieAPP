@@ -1,0 +1,16 @@
+//ALL
+@import "./reset.scss";
+.containerLoading {
+	height: 1000px;
+	background-color: black;
+}
+.loading {
+	font-size: 20px;
+}
+
+//Components
+@import "./components/Movie.scss";
+@import "./components/Header.scss";
+
+//Page
+@import "./routes/Home.scss";

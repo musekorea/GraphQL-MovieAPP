@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles.scss";
 
-const Movie = ({ id }) => {
+const Movie = ({ id, title, image }) => {
 	return (
 		<div>
 			<Link to={`/${id}`}>
-				<h1>{id}</h1>
+				<img src={image} alt={id} />
 			</Link>
 		</div>
 	);

@@ -23,8 +23,12 @@ const Detail = () => {
 	if (data) {
 		console.log(data.movie);
 	}
-
-	return <div>Detail</div>;
+	if (loading) {
+		return <h1>Loading</h1>;
+	}
+	if (!loading && data && data.movie) {
+		return <h1>{data.movie.title}</h1>;
+	}
 };
 
 export default Detail;
