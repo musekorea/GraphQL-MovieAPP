@@ -1,0 +1,32 @@
+.sidebar {
+	background-color: #181c1f;
+	position: fixed;
+	left: 0;
+	top: 30px;
+	height: 100vh;
+	padding: 57px 10px;
+	width: 190px;
+	h2 {
+		font-size: 15px;
+		margin-bottom: 18px;
+		color: white;
+	}
+	.inputBox {
+		input {
+			width: 75%;
+			border: none;
+			outline: none;
+			padding: 3px 6px;
+			border-radius: 6px 0 0 6px;
+		}
+		button {
+			width: 25%;
+			border: none;
+			outline: none;
+			padding: 3px;
+			border-radius: 0 6px 6px 0;
+			background-color: gold;
+			font-weight: 500;
+		}
+	}
+}

@@ -4,12 +4,16 @@ import { gql, useQuery } from "@apollo/client";
 import Movie from "../components/Movie";
 import "../styles.scss";
 import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 const graphQuery = gql`
 	query GetMovies {
-		movies {
+		movies(limit: 20, sort_by: "year") {
 			id
 			title
 			medium_cover_image
+			background_image
+			rating
+			year
 		}
 	}
 `;
@@ -29,13 +33,17 @@ const Home = () => {
 			<div className="container">
 				<Header />
 				<h1 className="sort">New Releases</h1>
+				<Sidebar></Sidebar>
 				<div className="movieList">
 					{data.movies.map((movie) => (
 						<Movie
 							key={movie.id}
 							id={movie.id}
 							title={movie.title}
-							image={movie.medium_cover_image}
+							poster={movie.medium_cover_image}
+							rating={movie.rating}
+							year={movie.year}
+							background_image={movie.background_image}
 						/>
 					))}
 				</div>

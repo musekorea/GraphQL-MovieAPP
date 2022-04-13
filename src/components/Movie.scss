@@ -1,0 +1,10 @@
+.movieContainer {
+	img {
+		width: 180px;
+		border-radius: 20px;
+	}
+	.mouseOn {
+		opacity: 0.5;
+		transform: scale(0.98);
+	}
+}

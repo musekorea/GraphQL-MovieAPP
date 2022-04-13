@@ -1,0 +1,53 @@
+.detailContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	.detailBox {
+		display: flex;
+		width: 80%;
+		height: 80%;
+		position: relative;
+		left: 16.5%;
+		border: 5px solid black;
+		.detailLeft {
+			width: 60%;
+			.backgroundImage {
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+			}
+			.description {
+				position: relative;
+				top: -35%;
+				color: white;
+				padding: 20px;
+				font-size: 18px;
+				line-height: 28px;
+			}
+		}
+		.detailRight {
+			width: 40%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			.title {
+				margin: 20px 0;
+			}
+			.ratingBox {
+				display: flex;
+				justify-content: space-between;
+				width: 46%;
+				margin-bottom: 20px;
+				.rating {
+					color: red;
+				}
+			}
+
+			.poster {
+				width: 200px;
+			}
+		}
+	}
+}

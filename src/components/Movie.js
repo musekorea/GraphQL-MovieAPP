@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles.scss";
 
-const Movie = ({ id, title, image }) => {
+const Movie = ({ id, title, poster,}) => {
+	const [mouseOn, setMouseOn] = useState(false);
+
 	return (
-		<div>
+		<div className="movieContainer">
 			<Link to={`/${id}`}>
-				<img src={image} alt={id} />
+				<img
+					className={mouseOn ? "mouseOn" : null}
+					src={poster}
+					alt={id}
+					onMouseOver={() => {
+						setMouseOn(true);
+					}}
+					onMouseLeave={() => setMouseOn(false)}
+				/>
 			</Link>
 		</div>
 	);
