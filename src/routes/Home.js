@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { gql, useQuery } from "@apollo/client";
 import Movie from "../components/Movie";
 import "../styles.scss";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+
 const graphQuery = gql`
-	query GetMovies {
-		movies(limit: 20, sort_by: "year") {
+	query GetMovies($minimum_rating: Int) {
+		movies(limit: 20, sort_by: "year", minimum_rating: $minimum_rating) {
 			id
 			title
 			medium_cover_image
@@ -19,7 +20,11 @@ const graphQuery = gql`
 `;
 
 const Home = () => {
-	const { loading, error, data } = useQuery(graphQuery);
+	const [rating, setRating] = useState(0);
+	const { loading, error, data } = useQuery(graphQuery, {
+		variables: { minimum_rating: Number(rating) },
+	});
+
 	if (loading) {
 		return (
 			<div className={"container containerLoading"}>
@@ -33,7 +38,7 @@ const Home = () => {
 			<div className="container">
 				<Header />
 				<h1 className="sort">New Releases</h1>
-				<Sidebar></Sidebar>
+				<Sidebar setRating={setRating}></Sidebar>
 				<div className="movieList">
 					{data.movies.map((movie) => (
 						<Movie

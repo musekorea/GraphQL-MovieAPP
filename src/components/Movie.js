@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles.scss";
 
-const Movie = ({ id, title, poster,}) => {
+const Movie = ({ id, title, poster }) => {
 	const [mouseOn, setMouseOn] = useState(false);
 
 	return (

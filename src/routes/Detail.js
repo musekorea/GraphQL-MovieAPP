@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -16,6 +16,11 @@ const graphQuery = gql`
 			year
 			background_image
 		}
+		suggestion(id: $id) {
+			id
+			title
+			medium_cover_image
+		}
 	}
 `;
 
@@ -26,9 +31,6 @@ const Detail = () => {
 			id: Number(id),
 		},
 	});
-	if (data) {
-		console.log(data.movie);
-	}
 	if (loading) {
 		return (
 			<div className="containerLoading">
@@ -38,7 +40,8 @@ const Detail = () => {
 			</div>
 		);
 	}
-	if (!loading && data && data.movie) {
+	if (!loading && data && data.movie && data.suggestion) {
+		const suggestionLists = [...data.suggestion];
 		return (
 			<div className="detailContainer">
 				<Header></Header>
@@ -50,6 +53,24 @@ const Detail = () => {
 							src={data.movie.background_image}
 							alt="background"
 						/>
+						<h1 className="suggestionTitle">Suggestion Movies</h1>
+						<div className="suggestionBox">
+							{suggestionLists.map((movie, index) => {
+								if (index === 0) {
+									return <div key={movie.id}></div>; //그냥 위에서 처리해야 겠구만
+								} else {
+									return (
+										<Link to={`/${movie.id}`} key={movie.id}>
+											<img
+												className="suggestion"
+												src={movie.medium_cover_image}
+												style={{ width: "120px" }}
+											></img>
+										</Link> //Key값은 Link에 줘야 error 안남
+									);
+								}
+							})}
+						</div>
 						<p className="description">{data.movie.description_full}</p>
 					</div>
 					<div className="detailRight">
