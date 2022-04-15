@@ -15,6 +15,7 @@ const graphQuery = gql`
 			background_image
 			rating
 			year
+			iskept @client #이건 로컬에만 적용됨
 		}
 	}
 `;
@@ -34,6 +35,7 @@ const Home = () => {
 		);
 	}
 	if (!loading && data && data.movies) {
+		console.log(data.movies);
 		return (
 			<div className="container">
 				<Header />
