@@ -1,7 +1,24 @@
 .movieContainer {
+	position: relative;
 	img {
 		width: 180px;
 		border-radius: 20px;
+	}
+	.keep {
+		position: absolute;
+		left: 134.5px;
+		border: none;
+		outline: none;
+		background-color: gray;
+		border-radius: 0 10px 0 0;
+		padding: 5px;
+		color: black;
+		&:hover {
+			background-color: tomato;
+		}
+	}
+	.keep.active {
+		background-color: gold;
 	}
 	.mouseOn {
 		opacity: 0.5;

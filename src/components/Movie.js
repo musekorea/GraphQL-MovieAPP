@@ -18,6 +18,7 @@ const Movie = ({ id, title, poster }) => {
 					onMouseLeave={() => setMouseOn(false)}
 				/>
 			</Link>
+			<button className="keep">KEEP</button>
 		</div>
 	);
 };
